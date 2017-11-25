@@ -39,3 +39,13 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem 'jsonapi-rails', '~> 0.3.1'
+
+group :development, :test do
+  gem 'rspec-rails', '~> 3.7', '>= 3.7.1'
+end
+
+group :development do
+  gem 'spring-commands-rspec', '~> 1.0', '>= 1.0.4'
+end
