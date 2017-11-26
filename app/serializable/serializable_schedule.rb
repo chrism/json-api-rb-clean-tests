@@ -5,4 +5,8 @@ class SerializableSchedule < JSONAPI::Serializable::Resource
 
   type 'schedules'
   attributes :name, :current_position
+
+  link :self do
+    @url_helpers.api_v1_schedule_url(@object.id)
+  end
 end
