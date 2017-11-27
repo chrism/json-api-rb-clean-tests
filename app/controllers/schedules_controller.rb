@@ -1,4 +1,4 @@
-class Api::V1::SchedulesController < ApplicationController
+class SchedulesController < ApplicationController
   deserializable_resource :schedule, only: [:create, :update]
   before_action :set_schedule, only: [:show, :update, :destroy]
 
