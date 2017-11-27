@@ -41,6 +41,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'jsonapi-rails', '~> 0.3.1'
+gem 'jsonapi_spec_helpers', '~> 0.4.5', require: false
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.7', '>= 3.7.1'
