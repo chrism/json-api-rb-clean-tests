@@ -1,5 +1,6 @@
 class Api::V1::SchedulesController < ApplicationController
   deserializable_resource :schedule, only: [:create, :update]
+  before_action :set_schedule, only: [:show, :update, :destroy]
 
   def index
     schedules = Schedule.all
@@ -7,8 +8,7 @@ class Api::V1::SchedulesController < ApplicationController
   end
 
   def show
-    schedule = Schedule.find(params[:id])
-    render jsonapi: schedule
+    render jsonapi: @schedule
   end
 
   def create
@@ -21,7 +21,27 @@ class Api::V1::SchedulesController < ApplicationController
     end
   end
 
+  def update
+    if @schedule.update(schedule_params)
+      render jsonapi: @schedule
+    else
+      render jsonapi_errors: @schedule.errors
+    end
+  end
+
+  def destroy
+    if @schedule.destroy
+      head :no_content
+    else
+      render jsonapi_errors: @schedule.errors
+    end
+  end
+
   private
+    def set_schedule
+      @schedule = Schedule.find(params[:id])
+    end
+
     def schedule_params
       params.require(:schedule).permit(:name)
     end
