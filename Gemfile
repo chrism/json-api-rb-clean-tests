@@ -49,3 +49,7 @@ end
 group :development do
   gem 'spring-commands-rspec', '~> 1.0', '>= 1.0.4'
 end
+
+group :test do
+  gem 'database_cleaner', '~> 1.6', '>= 1.6.2'
+end
