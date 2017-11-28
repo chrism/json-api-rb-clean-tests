@@ -1,5 +1,5 @@
 class SchedulesController < ApplicationController
-  deserializable_resource :schedule, only: [:create, :update]
+  deserializable_resource :schedule, class: DeserializableSchedule, only: [:create, :update]
   before_action :set_schedule, only: [:show, :update, :destroy]
 
   def index
@@ -43,6 +43,6 @@ class SchedulesController < ApplicationController
     end
 
     def schedule_params
-      params.require(:schedule).permit(:name)
+      params.require(:schedule).permit(:name, :current_position)
     end
 end
