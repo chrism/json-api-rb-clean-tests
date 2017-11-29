@@ -1,24 +1,22 @@
-# README
+# Using JSONAPI-RB
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Overview
 
-Things you may want to cover:
+A much more simple library which includes four libraries
 
-* Ruby version
+- [jsonapi-deserializable](https://github.com/jsonapi-rb/jsonapi-deserializable) — Conveniently deserialize JSON API payloads into custom hashes
+- 
 
-* System dependencies
+### Deserializable
 
-* Configuration
+The `deserializable_resource` method expects the `jsonapi-rails` params parser to be used, which places the JSON payload into `params[:_jsonapi]` for requests with `Content-Type: application/vnd.api+json`.
 
-* Database creation
+### Serializable
 
-* Database initialization
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+## Controllers
 
-* Deployment instructions
 
-* ...
+
+## Testing

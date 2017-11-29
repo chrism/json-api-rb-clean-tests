@@ -45,6 +45,8 @@ gem 'jsonapi_spec_helpers', '~> 0.4.5', require: false
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.7', '>= 3.7.1'
+  gem 'factory_bot_rails', '~> 4.8', '>= 4.8.2'
+  gem 'faker', '~> 1.8', '>= 1.8.4'
 end
 
 group :development do

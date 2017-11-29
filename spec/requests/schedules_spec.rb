@@ -26,8 +26,8 @@ RSpec.describe "Schedules", type: :request do
   end
 
   describe "schedules#index" do
-    let!(:schedule1) { Schedule.create(name: 'test 1') }
-    let!(:schedule2) { Schedule.create(name: 'test 2') }
+    let!(:schedule1) { create(:schedule) }
+    let!(:schedule2) { create(:schedule) }
 
     it "basic index" do
       get schedules_path
@@ -40,7 +40,7 @@ RSpec.describe "Schedules", type: :request do
 
   describe "schedules#show" do
     context "basic find" do
-      let!(:schedule) { Schedule.create(name: 'test 1') }
+      let!(:schedule) { create(:schedule) }
 
       it "serializes resource" do
         get schedule_path(schedule.id)
@@ -52,7 +52,7 @@ RSpec.describe "Schedules", type: :request do
 
   describe "schedules#update" do
     context "basic update" do
-      let!(:schedule) { Schedule.create(name: 'test 1') }
+      let!(:schedule) { create(:schedule) }
 
       let(:payload) do
         {
@@ -80,7 +80,7 @@ RSpec.describe "Schedules", type: :request do
 
   describe "schedules#destroy" do
     context "basic destroy" do
-      let!(:schedule) { Schedule.create(name: 'test 1') }
+      let!(:schedule) { create(:schedule) }
 
       it "destroys resource" do
         expect {
