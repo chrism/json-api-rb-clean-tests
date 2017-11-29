@@ -19,22 +19,22 @@ RSpec.describe "Schedules", type: :request do
           jsonapi_post schedules_path, payload
         }.to change { Schedule.count }.by(1)
         schedule = Schedule.last
-
         assert_payload_underscore(:schedule, schedule, json_item)
       end
     end
   end
 
   describe "schedules#index" do
-    let!(:schedule1) { create(:schedule) }
-    let!(:schedule2) { create(:schedule) }
+    context "basic index" do
+      let!(:schedule1) { create(:schedule) }
+      let!(:schedule2) { create(:schedule) }
 
-    it "basic index" do
-      get schedules_path
-      expect(response).to have_http_status(200)
-
-      assert_payload_underscore(:schedule, schedule1, json_items[0])
-      assert_payload_underscore(:schedule, schedule2, json_items[1])
+      it "returns array of resources" do
+        get schedules_path
+        expect(response).to have_http_status(200)
+        assert_payload_underscore(:schedule, schedule1, json_items[0])
+        assert_payload_underscore(:schedule, schedule2, json_items[1])
+      end
     end
   end
 
@@ -42,9 +42,8 @@ RSpec.describe "Schedules", type: :request do
     context "basic find" do
       let!(:schedule) { create(:schedule) }
 
-      it "serializes resource" do
+      it "returns resource" do
         get schedule_path(schedule.id)
-
         assert_payload_underscore(:schedule, schedule, json_item)
       end
     end
