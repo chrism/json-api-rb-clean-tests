@@ -5,4 +5,6 @@ class SerializableScheduledTrack < JSONAPI::Serializable::Resource
 
   type 'scheduled-tracks'
   attributes :state, :position
+
+  belongs_to :schedule
 end

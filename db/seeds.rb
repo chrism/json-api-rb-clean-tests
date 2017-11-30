@@ -5,9 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Schedule.delete_all
-ScheduledTrack.delete_all
+
+Schedule.destroy_all
 
 schedule = Schedule.create(name: 'Orange Gardens Radio')
 ScheduledTrack.create(position: 1, schedule: schedule)
 ScheduledTrack.create(position: 2, schedule: schedule)
+
+Schedule.create(name: 'Other One')

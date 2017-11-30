@@ -1,6 +1,6 @@
 class ScheduledTracksController < ApplicationController
   deserializable_resource :scheduled_track, only: [:create, :update]
-  before_action :set_scheduled_track, only: [:show, :update, :destroy]
+  before_action :set_scheduled_track, only: [:update, :destroy]
 
   def index
     scheduled_tracks = ScheduledTrack.all
@@ -8,7 +8,7 @@ class ScheduledTracksController < ApplicationController
   end
 
   def show
-    render jsonapi: @scheduled_track
+    render jsonapi: ScheduledTrack.includes(:schedule).find(params[:id]), include: ['schedule']
   end
 
   def create

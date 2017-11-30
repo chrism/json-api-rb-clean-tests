@@ -7,12 +7,6 @@ class SerializableSchedule < JSONAPI::Serializable::Resource
   attributes :name, :current_position
 
   has_many :scheduled_tracks do
-    meta do
-      { count: @object.scheduled_tracks.count }
-    end
-
-    puts "scheduled tracks #{@object.scheduled_tracks.inspect}"
-
     data do
       @object.scheduled_tracks
     end
