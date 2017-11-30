@@ -26,14 +26,22 @@ RSpec.describe "Schedules", type: :request do
 
   describe "schedules#index" do
     context "basic index" do
-      let!(:schedule1) { create(:schedule) }
-      let!(:schedule2) { create(:schedule) }
+      let!(:schedule1) { create(:schedule, name: 'Test 1') }
+      let!(:schedule2) { create(:schedule, name: 'Test 2') }
 
       it "returns array of resources" do
         get schedules_path
         expect(response).to have_http_status(200)
+        expect(json_items.length).to eq 2
         assert_payload_underscore(:schedule, schedule1, json_items[0])
         assert_payload_underscore(:schedule, schedule2, json_items[1])
+      end
+
+      it "filters by name" do
+        get schedules_path, params: { filter: { name: 'Test 1' } }
+        expect(response).to have_http_status(200)
+        expect(json_items.length).to eq 1
+        assert_payload_underscore(:schedule, schedule1, json_items[0])
       end
     end
   end
