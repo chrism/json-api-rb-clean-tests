@@ -8,7 +8,7 @@ class SchedulesController < ApplicationController
   end
 
   def show
-    render jsonapi: @schedule
+    render jsonapi: Schedule.includes(:scheduled_tracks).find(params[:id]), include: [:scheduled_tracks]
   end
 
   def create

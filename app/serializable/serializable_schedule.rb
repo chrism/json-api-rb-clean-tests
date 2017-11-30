@@ -11,6 +11,8 @@ class SerializableSchedule < JSONAPI::Serializable::Resource
       { count: @object.scheduled_tracks.count }
     end
 
+    puts "scheduled tracks #{@object.scheduled_tracks.inspect}"
+
     data do
       @object.scheduled_tracks
     end
