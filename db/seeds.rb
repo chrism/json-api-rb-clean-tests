@@ -10,6 +10,6 @@ Schedule.destroy_all
 
 schedule = Schedule.create(name: 'Orange Gardens Radio')
 ScheduledTrack.create(position: 1, schedule: schedule)
-ScheduledTrack.create(position: 2, schedule: schedule)
+ScheduledTrack.create(position: 2, schedule: schedule, state: 'played')
 
 Schedule.create(name: 'Other One')

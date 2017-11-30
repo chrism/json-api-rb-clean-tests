@@ -8,7 +8,7 @@ class SerializableSchedule < JSONAPI::Serializable::Resource
 
   has_many :scheduled_tracks do
     data do
-      @object.scheduled_tracks
+      @object.forthcoming_tracks
     end
   end
 

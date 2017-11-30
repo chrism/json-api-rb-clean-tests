@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "Scheduled Tracks", type: :request do
-  describe "schedules#index" do
+  describe "scheduled_tracks#index" do
     context "basic index" do
       let!(:schedule) { create(:schedule) }
       let!(:scheduled_track1) { create(:scheduled_track, schedule: schedule) }
@@ -16,7 +16,7 @@ RSpec.describe "Scheduled Tracks", type: :request do
     end
   end
 
-  describe "schedules#show" do
+  describe "scheduled_tracks#show" do
     context "basic find" do
       let!(:schedule) { create(:schedule) }
       let!(:scheduled_track) { create(:scheduled_track, schedule: schedule) }
@@ -85,7 +85,7 @@ RSpec.describe "Scheduled Tracks", type: :request do
     end
   end
 
-  describe "schedules#destroy" do
+  describe "scheduled_tracks#destroy" do
     context "basic destroy" do
       let!(:schedule) { create(:schedule) }
       let!(:scheduled_track) { create(:scheduled_track, schedule: schedule) }

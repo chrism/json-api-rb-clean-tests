@@ -55,6 +55,30 @@ RSpec.describe "Schedules", type: :request do
         assert_payload_underscore(:schedule, schedule, json_item)
       end
     end
+
+    context "with includes" do
+      let!(:schedule) { create(:schedule) }
+      let!(:scheduled_track1) { create(:scheduled_track, schedule: schedule) }
+
+      it "returns scheduled_tracks with resource" do
+        scheduled_track2 = create(:scheduled_track, schedule: schedule)
+
+        get schedule_path(schedule.id)
+
+        expect(json_includes('scheduled-tracks').length).to eq 2
+        assert_payload_underscore(:scheduled_track, scheduled_track1, json_include('scheduled-tracks', 0))
+        assert_payload_underscore(:scheduled_track, scheduled_track2, json_include('scheduled-tracks', 1))
+      end
+
+      it "returns scheduled_tracks with resource" do
+        scheduled_track2 = create(:scheduled_track, state: 'played', schedule: schedule)
+
+        get schedule_path(schedule.id)
+
+        expect(json_includes('scheduled-tracks').length).to eq 1
+        assert_payload_underscore(:scheduled_track, scheduled_track1, json_include('scheduled-tracks', 0))
+      end
+    end
   end
 
   describe "schedules#update" do
