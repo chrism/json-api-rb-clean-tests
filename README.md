@@ -5,7 +5,14 @@
 A much more simple library which includes four libraries
 
 - [jsonapi-deserializable](https://github.com/jsonapi-rb/jsonapi-deserializable) — Conveniently deserialize JSON API payloads into custom hashes
-- 
+- [jsonapi-serializable]()
+
+
+
+
+## Creating Scheduled Tracks
+
+`bin/rails g model scheduled_track position:integer state schedule:belongs_to`
 
 ### Deserializable
 
@@ -20,3 +27,10 @@ The `deserializable_resource` method expects the `jsonapi-rails` params parser t
 
 
 ## Testing
+
+Using an RSpec as usual with additional libraries to help
+
+- Rspec
+- Factory Bot
+- Faker
+- Database Cleaner
